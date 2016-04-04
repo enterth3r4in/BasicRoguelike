@@ -1,4 +1,4 @@
-package net.ccgames.rl.utility;
+package net.ccgames.rl.tiles;
 
 import java.awt.Color;
 

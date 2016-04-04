@@ -2,8 +2,6 @@ package net.ccgames.rl.tiles;
 
 import java.awt.Color;
 
-import net.ccgames.rl.utility.TileColoring;
-
 /**
  * Each tile has several guaranteed attributes including the tileID, the glyph, the color
  * the internal name(used locally for referencing) and the display name for examining tiles
@@ -36,67 +34,106 @@ public class Tile
 		this.displayName = displayName;
 	}
 	
-	//Only method which directly returns tiles
-	public Tile getTileByID(int tileID)
+//	//Only method which directly returns tiles
+//	public Tile getTileByID(int tileID)
+//	{
+//		switch(tileID)
+//		{
+//		case 0:
+//			return WALL;
+//		case 1:
+//			return FLOOR;
+//		default:
+//			return WALL;
+//		}
+//	}
+//	
+//	//Gets the tile ID by the internal name to be passed to getTileByID(int tileID)
+//	public int getTileIDByInternalName(String internalName)
+//	{
+//		switch(internalName)
+//		{
+//		case "tileWall":
+//			return WALL.tileID;
+//		case "tileFloor":
+//			return FLOOR.tileID;
+//		default:
+//			return WALL.tileID;
+//		}
+//	}
+//	
+//	//Get method for getting the glyph of a tile by the tile ID
+//	public char getTileGlyphByID(int tileID)
+//	{ return getTileByID(tileID).getTileGlyph(); }
+//	
+//	//Get method for getting the glyph of a tile by the internal name
+//	public char getTileGlyphByInternalName(String internalName)
+//	{ return getTileByID(getTileIDByInternalName(internalName)).getTileGlyph(); }
+//	
+//	//Get method for getting the glyph of a tile by the internal name
+//	public Color getTileColorByID(int tileID)
+//	{ return getTileByID(tileID).getTileColor(); }
+//	
+//	//Get method for getting the tile color by the internal name
+//	public Color getTileColorByInternalName(String internalName) 
+//	{ return getTileByID(getTileIDByInternalName(internalName)).getTileColor(); }
+//	
+//	//Get method for getting the internal name from the ID (obviously no method for getting internal name by internal name. What?
+//	public String getInternalNameByID(int tileID)
+//	{ return getTileByID(tileID).getInternalName(); }
+//	
+//	//Get method for getting the display name from the ID
+//	public String getDisplayNameByID(int tileID)
+//	{ return getTileByID(tileID).getDisplayName(); }
+//	
+//	//Get method for getting the display name by internal name
+//	public String getDisplayNameByInternalName(String internalName)
+//	{ return getTileByID(getTileIDByInternalName(internalName)).getDisplayName(); }
+	
+	/**
+	 * Uses the tile id to get the internal name. Use the tile sheet reference
+	 * for tile id to insure no mis-compares
+	 * @param tileID - Use tile sheet for tile id reference
+	 * @return - Internal Name
+	 */
+	public String getInternalNameByTileID(int tileID)
 	{
 		switch(tileID)
 		{
-		case 0:
-			return WALL;
-		case 1:
-			return FLOOR;
+		case TileSheet.WALL_ID:
+			return TileSheet.WALL_INTERNAL;
+		case TileSheet.FLOOR_ID:
+			return TileSheet.FLOOR_INTERNAL;
 		default:
-			return WALL;
+			return TileSheet.WALL_INTERNAL;
 		}
 	}
 	
-	//Gets the tile ID by the internal name to be passed to getTileByID(int tileID)
+	/**
+	 * Uses the internal name provided to get the tileID.
+	 * Always use the tile sheet reference for internal name to insure no mis-compares
+	 * @param internalName - Use tile sheet reference name
+	 * @return - Tile ID
+	 */
 	public int getTileIDByInternalName(String internalName)
 	{
 		switch(internalName)
 		{
-		case "tileWall":
-			return WALL.tileID;
-		case "tileFloor":
-			return FLOOR.tileID;
+		case TileSheet.WALL_INTERNAL:
+			return TileSheet.WALL_ID;
+		case TileSheet.FLOOR_INTERNAL:
+			return TileSheet.FLOOR_ID;
 		default:
-			return WALL.tileID;
+			return TileSheet.WALL_ID;
 		}
 	}
 	
-	//Get method for getting the glyph of a tile by the tile ID
-	public char getTileGlyphByID(int tileID)
-	{ return getTileByID(tileID).getTileGlyph(); }
-	
-	//Get method for getting the glyph of a tile by the internal name
-	public char getTileGlyphByInternalName(String internalName)
-	{ return getTileByID(getTileIDByInternalName(internalName)).getTileGlyph(); }
-	
-	//Get method for getting the glyph of a tile by the internal name
-	public Color getTileColorByID(int tileID)
-	{ return getTileByID(tileID).getTileColor(); }
-	
-	//Get method for getting the tile color by the internal name
-	public Color getTileColorByInternalName(String internalName) 
-	{ return getTileByID(getTileIDByInternalName(internalName)).getTileColor(); }
-	
-	//Get method for getting the internal name from the ID (obviously no method for getting internal name by internal name. What?
-	public String getInternalNameByID(int tileID)
-	{ return getTileByID(tileID).getInternalName(); }
-	
-	//Get method for getting the display name from the ID
-	public String getDisplayNameByID(int tileID)
-	{ return getTileByID(tileID).getDisplayName(); }
-	
-	//Get method for getting the display name by internal name
-	public String getDisplayNameByInternalName(String internalName)
-	{ return getTileByID(getTileIDByInternalName(internalName)).getDisplayName(); }
-	
 	//Standard get methods, but private for accessing only from the getByInternal or getByID
-	private char getTileGlyph() { return tileGlyph; }
-	private Color getTileColor() { return tileColor; }
-	private String getInternalName() { return internalName; }
-	private String getDisplayName() { return displayName; }
+	public int getTileID() { return tileID; }
+	public char getTileGlyph() { return tileGlyph; }
+	public Color getTileColor() { return tileColor; }
+	public String getInternalName() { return internalName; }
+	public String getDisplayName() { return displayName; }
 	
 	//Generic Tiles
 	public static final Tile WALL = new TileGeneric(0, '#', TileColoring.WALL, "tileWall", "Wall");
