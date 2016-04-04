@@ -1,0 +1,9 @@
+Design Document
+
+Simple Roguelike to begin with
+Additional features can be added on top
+
+World of Tiles (Enum? Abstract Class? Class?)
+
+Class would allow entity tiles to exist (chests, etc)
+
