@@ -38,6 +38,14 @@ public class World
 	
 	public Tile getTileAtCoordinates(int x, int y)
 	{
-		return world[x][y];
+		if(x < 0 || x > width || y < 0 || y > height)
+			return Tile.BOUNDS;
+		else
+			return world[x][y];
+	}
+	
+	public char getGlyph(int x, int y)
+	{
+		return getTileAtCoordinates(x, y).getTileGlyph();
 	}
 }

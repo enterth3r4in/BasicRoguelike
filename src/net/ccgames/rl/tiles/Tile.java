@@ -138,6 +138,7 @@ public class Tile
 	//Generic Tiles
 	public static final Tile WALL = new TileGeneric(0, '#', TileColoring.WALL, "tileWall", "Wall");
 	public static final Tile FLOOR = new TileGeneric(1, '.', TileColoring.FLOOR, "tileFloor", "Floor");
+	public static final Tile BOUNDS = new TileGeneric(-1, 'X', TileColoring.BOUNDS, "tileBounds", "BOUNDS");
 	
 	//Entity Tiles
 	

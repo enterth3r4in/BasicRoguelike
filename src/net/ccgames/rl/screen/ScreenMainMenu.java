@@ -31,7 +31,8 @@ public class ScreenMainMenu implements Screen
 		case KeyEvent.VK_O:
 			return new ScreenOptions(this);
 		case KeyEvent.VK_N:
-			return new ScreenNewGame();
+//			return new ScreenNewGame();
+			return new ScreenPlayGame();
 		default:
 			return this;
 		}
